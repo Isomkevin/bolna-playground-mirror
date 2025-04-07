@@ -71,15 +71,15 @@ const VoiceCard: React.FC<VoiceCardProps> = ({
 const VoicesPage = () => {
   const { voices, languages, voiceProviders, addVoice } = useData();
   const [searchQuery, setSearchQuery] = useState('');
-  const [language, setLanguage] = useState('');
-  const [provider, setProvider] = useState('');
+  const [language, setLanguage] = useState('all');
+  const [provider, setProvider] = useState('all');
   
   // Filter voices based on search query and selected filters
   const filteredVoices = voices.filter(voice => {
     const matchesSearch = voice.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                          voice.accent.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesLanguage = !language || voice.accent.includes(language);
-    const matchesProvider = !provider || voice.provider === provider;
+    const matchesLanguage = language === 'all' || voice.accent.includes(language);
+    const matchesProvider = provider === 'all' || voice.provider === provider;
     
     return matchesSearch && matchesLanguage && matchesProvider;
   });
@@ -117,10 +117,9 @@ const VoicesPage = () => {
         <div className="w-full md:w-48">
           <Select value={language} onValueChange={setLanguage}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="English" />
+              <SelectValue placeholder="Select Language" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Languages</SelectItem>
               {languages.map(lang => (
                 <SelectItem key={lang.value} value={lang.value}>{lang.label}</SelectItem>
               ))}
@@ -130,10 +129,9 @@ const VoicesPage = () => {
         <div className="w-full md:w-64">
           <Select value={provider} onValueChange={setProvider}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="All Voice Providers" />
+              <SelectValue placeholder="Select Provider" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Providers</SelectItem>
               {voiceProviders.map(vp => (
                 <SelectItem key={vp.value} value={vp.value}>{vp.label}</SelectItem>
               ))}
