@@ -120,6 +120,7 @@ const VoicesPage = () => {
               <SelectValue placeholder="English" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="all">All Languages</SelectItem>
               {languages.map(lang => (
                 <SelectItem key={lang.value} value={lang.value}>{lang.label}</SelectItem>
               ))}
@@ -132,6 +133,7 @@ const VoicesPage = () => {
               <SelectValue placeholder="All Voice Providers" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="all">All Providers</SelectItem>
               {voiceProviders.map(vp => (
                 <SelectItem key={vp.value} value={vp.value}>{vp.label}</SelectItem>
               ))}
