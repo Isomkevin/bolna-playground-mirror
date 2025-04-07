@@ -34,7 +34,7 @@ const VoiceCard: React.FC<VoiceCardProps> = ({
   onPlaySample
 }) => {
   return (
-    <div className="border border-bolna-border rounded-lg p-6 hover:shadow-md transition-all duration-300">
+    <div className="border border-bolna-border rounded-lg p-4 md:p-6 hover:shadow-md transition-all duration-300">
       <div>
         <h3 className="text-lg font-medium">{name}</h3>
         <p className="text-sm text-gray-600 mt-1">
@@ -42,7 +42,7 @@ const VoiceCard: React.FC<VoiceCardProps> = ({
         </p>
       </div>
       
-      <div className="mt-6 flex items-center gap-2">
+      <div className="mt-4 md:mt-6 flex items-center gap-2">
         <Button 
           variant="outline" 
           className="rounded-full w-8 h-8 p-0 flex items-center justify-center hover:bg-gray-100 transition-colors"
@@ -50,12 +50,12 @@ const VoiceCard: React.FC<VoiceCardProps> = ({
         >
           <Play className="h-4 w-4" />
         </Button>
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600 line-clamp-2">
           {sampleText}
         </p>
       </div>
 
-      <div className="mt-6">
+      <div className="mt-4 md:mt-6">
         <Button 
           variant="outline" 
           className="w-full justify-center hover:bg-gray-50 transition-colors"
@@ -105,8 +105,8 @@ const VoicesPage = () => {
       title="Voices" 
       subtitle="Explore and test voices"
     >
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
-        <div className="w-full md:flex-1">
+      <div className="flex flex-col space-y-4 mb-6 md:mb-8">
+        <div className="w-full">
           <Input 
             placeholder="Search voice, accent ..." 
             value={searchQuery}
@@ -114,40 +114,42 @@ const VoicesPage = () => {
             className="transition-all duration-300 border-bolna-border focus:ring-2 focus:ring-bolna-blue/20 focus:border-bolna-blue"
           />
         </div>
-        <div className="w-full md:w-48">
-          <Select value={language} onValueChange={setLanguage}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select Language" />
-            </SelectTrigger>
-            <SelectContent>
-              {languages.map(lang => (
-                <SelectItem key={lang.value} value={lang.value}>{lang.label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="w-full md:w-64">
-          <Select value={provider} onValueChange={setProvider}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select Provider" />
-            </SelectTrigger>
-            <SelectContent>
-              {voiceProviders.map(vp => (
-                <SelectItem key={vp.value} value={vp.value}>{vp.label}</SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        <div className="w-full md:w-auto">
-          <Button 
-            className="w-full md:w-auto bg-bolna-blue hover:bg-bolna-blue/90 text-white transition-all duration-300 hover:shadow-md"
-          >
-            Import voices
-          </Button>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="w-full">
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select Language" />
+              </SelectTrigger>
+              <SelectContent>
+                {languages.map(lang => (
+                  <SelectItem key={lang.value} value={lang.value}>{lang.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="w-full">
+            <Select value={provider} onValueChange={setProvider}>
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select Provider" />
+              </SelectTrigger>
+              <SelectContent>
+                {voiceProviders.map(vp => (
+                  <SelectItem key={vp.value} value={vp.value}>{vp.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="w-full sm:col-span-2 lg:col-span-2">
+            <Button 
+              className="w-full md:w-auto bg-bolna-blue hover:bg-bolna-blue/90 text-white transition-all duration-300 hover:shadow-md"
+            >
+              Import voices
+            </Button>
+          </div>
         </div>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {filteredVoices.map(voice => (
           <VoiceCard
             key={voice.id}
