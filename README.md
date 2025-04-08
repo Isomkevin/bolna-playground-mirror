@@ -1,73 +1,104 @@
-# Welcome to your Lovable project
+# AfriVoice AI – Voice Agent Platform Dashboard
 
-## Project info
+This project serves as the front-end dashboard for **AfriVoice AI**, a voice-first AI agent platform tailored for Africa. Built using React, TypeScript, and Tailwind CSS, this dashboard provides a clean, responsive UI foundation for managing voice agents, provider integrations, usage metrics, and more. It simulates live data interactions using centralized dummy data, paving the way for seamless backend API integration in future releases.
 
-**URL**: https://lovable.dev/projects/0c2a088a-c5a6-4592-9e46-be8323590a9c
+## Table of Contents
 
-## How can I edit this code?
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Folder Structure](#folder-structure)
+- [Installation & Setup](#installation--setup)
+- [Usage](#usage)
+- [Future Enhancements](#future-enhancements)
+- [Contributing](#contributing)
+- [License](#license)
 
-There are several ways of editing your application.
+## Project Overview
 
-**Use Lovable**
+The AfriVoice AI Dashboard includes:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0c2a088a-c5a6-4592-9e46-be8323590a9c) and start prompting.
+- A top header with brand, notifications, user profile, and settings.
+- Sidebar navigation for managing Voice Agents, Provider Keys, Usage Stats, and the Voice Lab.
+- A modular, mobile-responsive layout optimized for expansion.
+- The **Voice Lab**, a prototype area for testing and simulating voice agent behavior.
+- Centralized dummy data used throughout the UI, designed to be replaced with live APIs.
 
-Changes made via Lovable will be committed automatically to this repo.
+This dashboard enables developers, system admins, and stakeholders to visualize and manage AI-driven telephony workflows at scale.
 
-**Use your preferred IDE**
+## Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Interactive Voice Agent Dashboard** – Manage AI agent flows, routes, and provider keys.
+- **Centralized Mock Data** – Easily swap dummy content with real-time API responses.
+- **Responsive Layout** – Optimized for both mobile and desktop users.
+- **Voice Lab** – Test environment for future real-time call simulations or speech AI integration.
+- **Modular Codebase** – Reusable components, consistent structure, and scalable logic.
+- **Production-Ready UI** – Clean, maintainable TypeScript + Tailwind implementation.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Tech Stack
 
-Follow these steps:
+- **React.js** – Front-end framework for building interactive UIs.
+- **TypeScript** – Ensures type safety and improved code maintainability.
+- **Tailwind CSS** – Utility-first CSS for rapid styling and responsiveness.
+- *(Optional)* **NextUI Components** – Easy-to-integrate UI elements.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Folder Structure
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+/src
+  ├── components/       # Reusable UI components (e.g., Header, Sidebar, Panels)
+  ├── context/          # Dummy data context for simulation
+  ├── pages/            # Main route pages like Dashboard and Voice Lab
+  ├── styles/           # Tailwind configuration and global styles
+  └── App.tsx           # Main entry point
 ```
 
-**Edit a file directly in GitHub**
+## Installation & Setup
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/yourusername/afrivoice-dashboard.git
+   cd afrivoice-dashboard
+   ```
 
-**Use GitHub Codespaces**
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Run the Dev Server:**
+   ```bash
+   npm start
+   ```
 
-## What technologies are used for this project?
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This project is built with:
+## Usage
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Navigation:** Use the sidebar to access all core modules.
+- **Voice Lab:** Interact with placeholder voice agent workflows.
+- **Data Source:** All content is driven by centralized dummy data—ideal for API integration in future versions.
 
-## How can I deploy this project?
+## Future Enhancements
 
-Simply open [Lovable](https://lovable.dev/projects/0c2a088a-c5a6-4592-9e46-be8323590a9c) and click on Share -> Publish.
+- 🔌 **Live API Integration** – Replace mock data with live backend data via REST or GraphQL.
+- 🧠 **Conversational AI Hooks** – Integrate with voice AI engines like Deepgram, Whisper, or VAPI.
+- 🌍 **Local Language Support** – Expand to simulate or demo voice interactions in Swahili, Hausa, Amharic, etc.
+- 📈 **Analytics Dashboard** – Visualize agent performance, call data, and language usage metrics.
+- 🎛️ **Voice Flow Builder** – Drag-and-drop interface for creating IVR or AI call flows.
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes it is!
+Contributions are welcome!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+1. Fork the repo.
+2. Create a new branch (`git checkout -b feature/YourFeature`)
+3. Commit your code.
+4. Push to GitHub (`git push origin feature/YourFeature`)
+5. Submit a pull request 🚀
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Make sure your code follows the style guide and includes helpful comments.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
