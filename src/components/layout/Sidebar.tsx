@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Settings, History, Hash, BookOpen, Layers, 
-  Mic, Code, LibraryBig, User, ChevronLeft, ChevronRight 
+  Mic, Code, LibraryBig, User 
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -50,38 +50,17 @@ const navItems = [
   },
 ];
 
-interface SidebarProps {
-  collapsed?: boolean;
-  onToggle?: () => void;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ collapsed = false, onToggle }) => {
+const Sidebar = () => {
   const location = useLocation();
   
   return (
-    <div className="h-screen border-r border-bolna-border fixed left-0 top-0 w-full bg-white z-10 flex flex-col">
-      <div className="p-4 border-b border-bolna-border h-[72px] flex items-center justify-between">
-        <Link to="/" className={cn("flex items-center", collapsed ? "justify-center" : "")}>
-          {collapsed ? (
-            <div className="w-8 h-8 bg-bolna-blue rounded-full flex items-center justify-center text-white font-bold">
-              B
-            </div>
-          ) : (
-            <BolnaLogo />
-          )}
+    <div className="h-screen border-r border-bolna-border fixed left-0 top-0 w-[200px] bg-white z-10">
+      <div className="p-4 border-b border-bolna-border h-[72px] flex items-center">
+        <Link to="/" className="flex items-center justify-center">
+          <BolnaLogo />
         </Link>
-        <button 
-          className="md:flex hidden items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100 transition-colors"
-          onClick={onToggle}
-        >
-          {collapsed ? (
-            <ChevronRight className="h-5 w-5 text-gray-500" />
-          ) : (
-            <ChevronLeft className="h-5 w-5 text-gray-500" />
-          )}
-        </button>
       </div>
-      <nav className="py-4 flex-1 overflow-y-auto">
+      <nav className="py-4">
         <ul className="space-y-1 px-2">
           {navItems.map((item) => (
             <li key={item.path}>
@@ -91,23 +70,18 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed = false, onToggle }) => {
                   "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   location.pathname === item.path || location.pathname.startsWith(item.path + '/')
                     ? "text-bolna-blue bg-bolna-lightBlue"
-                    : "text-gray-700 hover:bg-gray-100",
-                  collapsed && "justify-center"
+                    : "text-gray-700 hover:bg-gray-100"
                 )}
-                title={collapsed ? item.label : undefined}
               >
-                <item.icon className="h-5 w-5 flex-shrink-0" />
-                {!collapsed && <span>{item.label}</span>}
+                <item.icon className="h-5 w-5" />
+                <span>{item.label}</span>
               </Link>
             </li>
           ))}
         </ul>
       </nav>
-      <div className={cn(
-        "p-4 flex", 
-        collapsed ? "justify-center" : "justify-center"
-      )}>
-        <button className="p-3 rounded-full border border-bolna-border hover:bg-gray-100 transition-colors">
+      <div className="absolute bottom-5 w-full flex justify-center">
+        <button className="p-3 rounded-full border border-bolna-border">
           <User className="h-5 w-5 text-gray-700" />
         </button>
       </div>
