@@ -242,7 +242,7 @@ export const voiceLabSamples: VoiceLabSample[] = [
 
 // Languages and accents for filtering
 export const languages = [
-  { value: '', label: 'All Languages' },
+  { value: 'all', label: 'All Languages' },
   { value: 'English', label: 'English' },
   { value: 'French', label: 'French' },
   { value: 'Turkish', label: 'Turkish' },
@@ -252,7 +252,7 @@ export const languages = [
 ];
 
 export const voiceProviders = [
-  { value: '', label: 'All Voice Providers' },
+  { value: 'all', label: 'All Voice Providers' },
   { value: 'polly', label: 'Amazon Polly' },
   { value: 'elevenlabs', label: 'ElevenLabs' },
   { value: 'google', label: 'Google' }

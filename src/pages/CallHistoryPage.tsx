@@ -19,11 +19,12 @@ const CallHistoryPage = () => {
     >
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="w-full md:w-48">
-          <Select>
+          <Select defaultValue="all">
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select agent" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="all">All Agents</SelectItem>
               <SelectItem value="agent1">New Agent</SelectItem>
               <SelectItem value="agent2">Customer Support</SelectItem>
               <SelectItem value="agent3">Sales Agent</SelectItem>
@@ -31,11 +32,12 @@ const CallHistoryPage = () => {
           </Select>
         </div>
         <div className="w-full md:w-48">
-          <Select>
+          <Select defaultValue="all">
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select batch" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="all">All Batches</SelectItem>
               <SelectItem value="batch1">Batch 1</SelectItem>
               <SelectItem value="batch2">Batch 2</SelectItem>
               <SelectItem value="batch3">Batch 3</SelectItem>
