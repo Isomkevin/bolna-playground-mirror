@@ -4,32 +4,32 @@ import { Phone, MessageSquare, Users, Globe, Clock, Shield } from "lucide-react"
 
 const features = [
   {
-    icon: <Phone className="h-10 w-10 text-bolna-blue" />,
+    icon: <Phone className="h-10 w-10 text-afrivoice-blue" />,
     title: "Phone Call Integration",
     description: "Connect with users via standard phone calls, no smartphone or internet required"
   },
   {
-    icon: <MessageSquare className="h-10 w-10 text-bolna-blue" />,
+    icon: <MessageSquare className="h-10 w-10 text-afrivoice-blue" />,
     title: "Local Language Support",
     description: "AI agents that understand and speak Swahili, Hausa, Amharic, and other African languages"
   },
   {
-    icon: <Users className="h-10 w-10 text-bolna-blue" />,
+    icon: <Users className="h-10 w-10 text-afrivoice-blue" />,
     title: "Custom Voice Agents",
     description: "Create specialized AI agents for healthcare, agriculture, education, and more"
   },
   {
-    icon: <Globe className="h-10 w-10 text-bolna-blue" />,
+    icon: <Globe className="h-10 w-10 text-afrivoice-blue" />,
     title: "Rural Accessibility",
     description: "Reach remote communities without requiring internet infrastructure"
   },
   {
-    icon: <Clock className="h-10 w-10 text-bolna-blue" />,
+    icon: <Clock className="h-10 w-10 text-afrivoice-blue" />,
     title: "24/7 Availability",
     description: "Provide continuous service without staffing limitations or working hours"
   },
   {
-    icon: <Shield className="h-10 w-10 text-bolna-blue" />,
+    icon: <Shield className="h-10 w-10 text-afrivoice-blue" />,
     title: "Secure Conversations",
     description: "End-to-end encryption and privacy-focused design for sensitive information"
   }

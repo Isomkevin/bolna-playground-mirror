@@ -18,7 +18,7 @@ const Benefits = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="w-full md:w-1/2">
-            <div className="bg-gradient-to-tr from-bolna-blue to-blue-400 rounded-2xl p-1">
+            <div className="bg-gradient-to-tr from-afrivoice-blue to-blue-400 rounded-2xl p-1">
               <div className="bg-white rounded-xl overflow-hidden">
                 <img 
                   src="/lovable-uploads/493b10a9-9de1-4247-80dd-230bd186cbb8.png" 

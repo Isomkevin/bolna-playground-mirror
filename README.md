@@ -1,3 +1,4 @@
+
 # AfriVoice AI – Voice Agent Platform Dashboard
 
 This project serves as the front-end dashboard for **AfriVoice AI**, a voice-first AI agent platform tailored for Africa. Built using React, TypeScript, and Tailwind CSS, this dashboard provides a clean, responsive UI foundation for managing voice agents, provider integrations, usage metrics, and more. It simulates live data interactions using centralized dummy data, paving the way for seamless backend API integration in future releases.
@@ -40,7 +41,7 @@ This dashboard enables developers, system admins, and stakeholders to visualize 
 - **React.js** – Front-end framework for building interactive UIs.
 - **TypeScript** – Ensures type safety and improved code maintainability.
 - **Tailwind CSS** – Utility-first CSS for rapid styling and responsiveness.
-- *(Optional)* **NextUI Components** – Easy-to-integrate UI elements.
+- **Shadcn UI** – Easy-to-integrate UI elements.
 
 ## Folder Structure
 

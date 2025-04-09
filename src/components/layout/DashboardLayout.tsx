@@ -1,50 +1,30 @@
 
-import React, { ReactNode, useEffect } from 'react';
-import Sidebar from './Sidebar';
+import React from 'react';
 import Header from './Header';
+import Sidebar from './Sidebar';
 
 interface DashboardLayoutProps {
-  children: ReactNode;
+  children: React.ReactNode;
   title?: string;
   subtitle?: string;
   balance?: string;
 }
 
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ 
-  children, 
+  children,
   title,
   subtitle,
   balance
 }) => {
-  // Add a fade-in animation effect when the component mounts
-  useEffect(() => {
-    // This creates a nice fade-in effect when navigating between pages
-    const mainContent = document.querySelector('main');
-    if (mainContent) {
-      mainContent.classList.add('opacity-0');
-      
-      // Force a reflow to ensure the animation works properly
-      void mainContent.offsetWidth;
-      
-      // Add the animation classes
-      mainContent.classList.add('animate-fade-in');
-      mainContent.classList.remove('opacity-0');
-    }
-    
-    // Clean up animation classes on unmount
-    return () => {
-      if (mainContent) {
-        mainContent.classList.remove('animate-fade-in');
-      }
-    };
-  }, []);
-
   return (
-    <div className="flex h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
+      {/* Sidebar takes up the left side */}
       <Sidebar />
-      <div className="flex-1 ml-[200px] flex flex-col">
+      
+      {/* Main content area with padding to account for sidebar width on desktop */}
+      <div className="md:ml-[200px] transition-all duration-300">
         <Header title={title} subtitle={subtitle} balance={balance} />
-        <main className="flex-1 p-6 overflow-y-auto transition-all duration-300">
+        <main className="p-6">
           {children}
         </main>
       </div>

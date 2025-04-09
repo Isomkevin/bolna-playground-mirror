@@ -87,17 +87,17 @@
   }
 }
 
-/* Custom styles for Bolna Dashboard */
+/* Custom styles for AfriVoice AI Dashboard */
 @layer components {
-  .bolna-button-primary {
-    @apply bg-bolna-blue hover:bg-bolna-blue/90 text-white;
+  .afrivoice-button-primary {
+    @apply bg-afrivoice-blue hover:bg-afrivoice-blue/90 text-white;
   }
   
-  .bolna-card {
-    @apply border border-bolna-border rounded-lg p-4;
+  .afrivoice-card {
+    @apply border border-afrivoice-border rounded-lg p-4;
   }
   
-  .bolna-table-header {
-    @apply bg-gray-50 border-b border-bolna-border p-4;
+  .afrivoice-table-header {
+    @apply bg-gray-50 border-b border-afrivoice-border p-4;
   }
 }

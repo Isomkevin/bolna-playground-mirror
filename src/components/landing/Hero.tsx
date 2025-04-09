@@ -29,7 +29,7 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button asChild size="lg" className="text-base">
+              <Button asChild size="lg" className="text-base bg-afrivoice-blue hover:bg-afrivoice-blue/90">
                 <Link to="/agent-setup">
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -42,8 +42,8 @@ const Hero = () => {
           
           <div className="w-full md:w-1/2">
             <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-              <div className="aspect-video bg-bolna-blue/10 rounded-lg flex items-center justify-center">
-                <span className="text-bolna-blue font-medium">Voice Agent Demo</span>
+              <div className="aspect-video bg-afrivoice-blue/10 rounded-lg flex items-center justify-center">
+                <span className="text-afrivoice-blue font-medium">Voice Agent Demo</span>
               </div>
             </div>
           </div>

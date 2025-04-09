@@ -32,8 +32,8 @@ const Header: React.FC<HeaderProps> = ({
 
   const getPageSubtitle = () => {
     const path = location.pathname;
-    if (path.includes('providers')) return 'Add keys securely to connect your own Providers within Bolna.';
-    if (path.includes('developers')) return 'These keys can be used to read and write data to Bolna. Please do not share these keys and make sure you store them somewhere secure.';
+    if (path.includes('providers')) return 'Add keys securely to connect your own Providers within AfriVoice AI.';
+    if (path.includes('developers')) return 'These keys can be used to read and write data to AfriVoice AI. Please do not share these keys and make sure you store them somewhere secure.';
     if (path.includes('voices')) return 'Explore and test voices';
     if (path.includes('knowledge-base')) return 'Manage knowledge base entries and upload PDFs';
     if (path.includes('phone-numbers')) return 'Buy and view your phone numbers';
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-between py-4 px-6 border-b border-bolna-border">
+    <div className="flex items-center justify-between py-4 px-6 border-b border-afrivoice-border">
       <div>
         <h1 className="text-2xl font-bold">{title || getPageTitle()}</h1>
         {(subtitle || getPageSubtitle()) && (
@@ -56,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({
           <span className="text-gray-600 mr-2">Available balance:</span>
           <span className="font-medium">{balance}</span>
         </div>
-        <Button className="bg-bolna-blue hover:bg-bolna-blue/90 text-white">
+        <Button className="bg-afrivoice-blue hover:bg-afrivoice-blue/90 text-white">
           Add more funds
         </Button>
         <Button variant="outline" className="flex items-center gap-2">
