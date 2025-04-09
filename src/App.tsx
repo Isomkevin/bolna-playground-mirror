@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { DataProvider } from "@/context/DataContext";
 
+import LandingPage from "./pages/LandingPage";
 import ProvidersPage from "./pages/ProvidersPage";
 import DevelopersPage from "./pages/DevelopersPage";
 import VoicesPage from "./pages/VoicesPage";
@@ -27,7 +28,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/agent-setup" replace />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/agent-setup" element={<AgentSetupPage />} />
             <Route path="/providers" element={<ProvidersPage />} />
             <Route path="/developers" element={<DevelopersPage />} />
