@@ -50,7 +50,7 @@ const CallHistoryPage = () => {
   const copyAPICode = () => {
     navigator.clipboard.writeText(`
     const fetchCallHistory = async () => {
-      const response = await fetch('https://api.afrivoiceai.com/v1/call-history', {
+      const response = await fetch('https://api.africopilot.ai/v1/call-history', {
         headers: {
           'Authorization': 'Bearer YOUR_API_KEY'
         }
@@ -68,20 +68,20 @@ const CallHistoryPage = () => {
 
   return (
     <DashboardLayout 
-      title="Agent conversations" 
-      subtitle="Displays all historical conversations with agents"
+      title="Assistant conversations" 
+      subtitle="Displays all historical conversations with assistants"
     >
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="w-full md:w-48">
           <Select value={selectedAgent} onValueChange={handleAgentChange}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select agent" />
+              <SelectValue placeholder="Select assistant" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Agents</SelectItem>
-              <SelectItem value="agent1">New Agent</SelectItem>
+              <SelectItem value="all">All Assistants</SelectItem>
+              <SelectItem value="agent1">New Assistant</SelectItem>
               <SelectItem value="agent2">Customer Support</SelectItem>
-              <SelectItem value="agent3">Sales Agent</SelectItem>
+              <SelectItem value="agent3">Sales Assistant</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -133,27 +133,27 @@ const CallHistoryPage = () => {
         </div>
       </div>
       
-      <div className="border border-afrivoice-border rounded-lg p-12 text-center">
+      <div className="border border-africopilot-border rounded-lg p-12 text-center">
         {isFiltered ? (
           <div>
             <p className="text-gray-500 mb-4">No conversations found with the selected filters.</p>
             <div className="flex flex-wrap gap-2 justify-center">
               {selectedAgent && (
-                <Badge variant="outline" className="text-afrivoice-blue">
-                  Agent: {selectedAgent === 'agent1' ? 'New Agent' : 
+                <Badge variant="outline" className="text-africopilot-blue">
+                  Assistant: {selectedAgent === 'agent1' ? 'New Assistant' : 
                           selectedAgent === 'agent2' ? 'Customer Support' : 
-                          selectedAgent === 'agent3' ? 'Sales Agent' : selectedAgent}
+                          selectedAgent === 'agent3' ? 'Sales Assistant' : selectedAgent}
                 </Badge>
               )}
               {selectedBatch && (
-                <Badge variant="outline" className="text-afrivoice-blue">
+                <Badge variant="outline" className="text-africopilot-blue">
                   Batch: {selectedBatch}
                 </Badge>
               )}
             </div>
           </div>
         ) : (
-          <p className="text-gray-500">Select an agent to view all its executions.</p>
+          <p className="text-gray-500">Select an assistant to view all its executions.</p>
         )}
       </div>
       
@@ -163,7 +163,7 @@ const CallHistoryPage = () => {
           <DialogHeader>
             <DialogTitle>API Access</DialogTitle>
             <DialogDescription>
-              Access call history data programmatically through our RESTful API
+              Access conversation history data programmatically through our RESTful API
             </DialogDescription>
           </DialogHeader>
           
@@ -178,7 +178,7 @@ const CallHistoryPage = () => {
                   <code>
 {`// JavaScript example
 const fetchCallHistory = async () => {
-  const response = await fetch('https://api.afrivoiceai.com/v1/call-history', {
+  const response = await fetch('https://api.africopilot.ai/v1/call-history', {
     headers: {
       'Authorization': 'Bearer YOUR_API_KEY'
     }
@@ -204,19 +204,19 @@ const fetchCallHistory = async () => {
                 
                 <h3 className="font-semibold mb-2">Query Parameters</h3>
                 <ul className="list-disc list-inside space-y-1 mb-4">
-                  <li><span className="font-mono">agent_id</span> - Filter by agent ID</li>
+                  <li><span className="font-mono">assistant_id</span> - Filter by assistant ID</li>
                   <li><span className="font-mono">batch_id</span> - Filter by batch ID</li>
                   <li><span className="font-mono">start_date</span> - Start date (ISO format)</li>
                   <li><span className="font-mono">end_date</span> - End date (ISO format)</li>
                 </ul>
                 
                 <h3 className="font-semibold mb-2">Response Format</h3>
-                <p>Returns a JSON array of call records with metadata and transcripts</p>
+                <p>Returns a JSON array of conversation records with metadata and transcripts</p>
               </div>
               <Button
                 variant="outline"
                 className="w-full"
-                onClick={() => window.open('https://docs.afrivoiceai.com/api/reference', '_blank')}
+                onClick={() => window.open('https://docs.africopilot.ai/api/reference', '_blank')}
               >
                 View Full API Documentation
               </Button>

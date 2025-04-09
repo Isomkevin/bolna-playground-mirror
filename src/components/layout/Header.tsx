@@ -24,27 +24,27 @@ const Header: React.FC<HeaderProps> = ({
     if (path.includes('voices')) return 'Voices';
     if (path.includes('knowledge-base')) return 'Knowledge Base';
     if (path.includes('phone-numbers')) return 'My phone numbers';
-    if (path.includes('call-history')) return 'Agent conversations';
-    if (path.includes('agent-setup')) return 'Agent setup';
+    if (path.includes('call-history')) return 'Assistant conversations';
+    if (path.includes('agent-setup')) return 'Assistant setup';
     if (path.includes('batches')) return 'Batches';
     return 'Dashboard';
   };
 
   const getPageSubtitle = () => {
     const path = location.pathname;
-    if (path.includes('providers')) return 'Add keys securely to connect your own Providers within AfriVoice AI.';
-    if (path.includes('developers')) return 'These keys can be used to read and write data to AfriVoice AI. Please do not share these keys and make sure you store them somewhere secure.';
+    if (path.includes('providers')) return 'Add keys securely to connect your own Providers within AfriCopilot AI.';
+    if (path.includes('developers')) return 'These keys can be used to read and write data to AfriCopilot AI. Please do not share these keys and make sure you store them somewhere secure.';
     if (path.includes('voices')) return 'Explore and test voices';
     if (path.includes('knowledge-base')) return 'Manage knowledge base entries and upload PDFs';
     if (path.includes('phone-numbers')) return 'Buy and view your phone numbers';
-    if (path.includes('call-history')) return 'Displays all historical conversations with agents';
+    if (path.includes('call-history')) return 'Displays all historical conversations with assistants';
     if (path.includes('agent-setup')) return '';
     if (path.includes('batches')) return 'Manage and monitor your batch processes';
     return '';
   };
 
   return (
-    <div className="flex items-center justify-between py-4 px-6 border-b border-afrivoice-border">
+    <div className="flex items-center justify-between py-4 px-6 border-b border-africopilot-border">
       <div>
         <h1 className="text-2xl font-bold">{title || getPageTitle()}</h1>
         {(subtitle || getPageSubtitle()) && (
@@ -56,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({
           <span className="text-gray-600 mr-2">Available balance:</span>
           <span className="font-medium">{balance}</span>
         </div>
-        <Button className="bg-afrivoice-blue hover:bg-afrivoice-blue/90 text-white">
+        <Button className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white">
           Add more funds
         </Button>
         <Button variant="outline" className="flex items-center gap-2">

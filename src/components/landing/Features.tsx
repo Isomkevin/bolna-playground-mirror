@@ -4,33 +4,33 @@ import { Phone, MessageSquare, Users, Globe, Clock, Shield } from "lucide-react"
 
 const features = [
   {
-    icon: <Phone className="h-10 w-10 text-afrivoice-blue" />,
-    title: "Phone Call Integration",
-    description: "Connect with users via standard phone calls, no smartphone or internet required"
+    icon: <Phone className="h-10 w-10 text-africopilot-blue" />,
+    title: "Multichannel Support",
+    description: "Connect with users via phone calls, chat, or USSD - works on any device"
   },
   {
-    icon: <MessageSquare className="h-10 w-10 text-afrivoice-blue" />,
+    icon: <MessageSquare className="h-10 w-10 text-africopilot-blue" />,
     title: "Local Language Support",
-    description: "AI agents that understand and speak Swahili, Hausa, Amharic, and other African languages"
+    description: "AI assistants that understand and speak Swahili, Hausa, Amharic, and other African languages"
   },
   {
-    icon: <Users className="h-10 w-10 text-afrivoice-blue" />,
-    title: "Custom Voice Agents",
-    description: "Create specialized AI agents for healthcare, agriculture, education, and more"
+    icon: <Users className="h-10 w-10 text-africopilot-blue" />,
+    title: "Specialized AI Teammates",
+    description: "Create dedicated assistants for healthcare, agriculture, education, and more"
   },
   {
-    icon: <Globe className="h-10 w-10 text-afrivoice-blue" />,
-    title: "Rural Accessibility",
-    description: "Reach remote communities without requiring internet infrastructure"
+    icon: <Globe className="h-10 w-10 text-africopilot-blue" />,
+    title: "Universal Accessibility",
+    description: "Reach everyone regardless of device, connectivity, or technical skills"
   },
   {
-    icon: <Clock className="h-10 w-10 text-afrivoice-blue" />,
+    icon: <Clock className="h-10 w-10 text-africopilot-blue" />,
     title: "24/7 Availability",
-    description: "Provide continuous service without staffing limitations or working hours"
+    description: "Your AI teammate is always ready to help, without staffing limitations"
   },
   {
-    icon: <Shield className="h-10 w-10 text-afrivoice-blue" />,
-    title: "Secure Conversations",
+    icon: <Shield className="h-10 w-10 text-africopilot-blue" />,
+    title: "Secure Interactions",
     description: "End-to-end encryption and privacy-focused design for sensitive information"
   }
 ];
@@ -40,10 +40,10 @@ const Features = () => {
     <section id="features" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful Voice AI Features</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Powerful AI Assistant Features</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            AfriVoice AI brings smart voice agents to millions across Africa, 
-            even in areas with limited connectivity and technology adoption.
+            AfriCopilot AI brings intelligent assistants to millions across Africa, 
+            working as your reliable teammate across all communications channels.
           </p>
         </div>
         

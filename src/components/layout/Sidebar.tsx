@@ -12,12 +12,12 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 const navItems = [
   { 
     icon: Settings, 
-    label: 'Agent Setup', 
+    label: 'Assistant Setup', 
     path: '/agent-setup',
   },
   { 
     icon: History, 
-    label: 'Call History', 
+    label: 'Conversation History', 
     path: '/call-history',
   },
   { 
@@ -59,17 +59,17 @@ const Sidebar = () => {
   const SidebarContent = () => (
     <>
       <div className={cn(
-        "p-4 border-b border-afrivoice-border h-[72px] flex items-center",
+        "p-4 border-b border-africopilot-border h-[72px] flex items-center",
         collapsed ? "justify-center" : "justify-between"
       )}>
         {!collapsed && (
           <Link to="/" className="flex items-center">
-            <AfriVoiceLogo />
+            <AfriCopilotLogo />
           </Link>
         )}
         {collapsed && (
           <Link to="/" className="flex items-center justify-center">
-            <AfriVoiceIcon />
+            <AfriCopilotIcon />
           </Link>
         )}
         <Button
@@ -90,7 +90,7 @@ const Sidebar = () => {
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   location.pathname === item.path || location.pathname.startsWith(item.path + '/')
-                    ? "text-afrivoice-blue bg-afrivoice-lightBlue"
+                    ? "text-africopilot-blue bg-africopilot-lightBlue"
                     : "text-gray-700 hover:bg-gray-100",
                   collapsed && "justify-center px-2"
                 )}
@@ -107,7 +107,7 @@ const Sidebar = () => {
         "absolute bottom-5 w-full flex",
         collapsed ? "justify-center" : "justify-center"
       )}>
-        <button className="p-3 rounded-full border border-afrivoice-border">
+        <button className="p-3 rounded-full border border-africopilot-border">
           <User className="h-5 w-5 text-gray-700" />
         </button>
       </div>
@@ -134,7 +134,7 @@ const Sidebar = () => {
       
       {/* Desktop Sidebar */}
       <div className={cn(
-        "h-screen border-r border-afrivoice-border fixed left-0 top-0 bg-white z-10 hidden md:block transition-all duration-300",
+        "h-screen border-r border-africopilot-border fixed left-0 top-0 bg-white z-10 hidden md:block transition-all duration-300",
         collapsed ? "w-[70px]" : "w-[200px]"
       )}>
         <SidebarContent />
@@ -143,17 +143,17 @@ const Sidebar = () => {
   );
 };
 
-// AfriVoice Logo SVG component
-const AfriVoiceLogo = () => (
+// AfriCopilot Logo SVG component
+const AfriCopilotLogo = () => (
   <div className="flex items-center">
-    <Phone className="h-8 w-8 text-afrivoice-blue mr-2" />
-    <span className="text-lg font-bold text-afrivoice-blue">AfriVoice AI</span>
+    <Phone className="h-8 w-8 text-africopilot-blue mr-2" />
+    <span className="text-lg font-bold text-africopilot-blue">AfriCopilot AI</span>
   </div>
 );
 
 // Icon only version for collapsed state
-const AfriVoiceIcon = () => (
-  <Phone className="h-8 w-8 text-afrivoice-blue" />
+const AfriCopilotIcon = () => (
+  <Phone className="h-8 w-8 text-africopilot-blue" />
 );
 
 // For mobile compatibility

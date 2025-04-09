@@ -12,38 +12,38 @@ const useCaseCategories = [
 const useCases = [
   {
     category: "healthcare",
-    title: "Patient Follow-Up",
-    description: "Follows up with patients to schedule check-ins and monitor their progress",
+    title: "Patient Support",
+    description: "Assists patients with appointment scheduling and health monitoring",
     image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
   },
   {
     category: "healthcare",
-    title: "Medication Reminders",
-    description: "Calls patients with timely medication reminders and adherence checks",
+    title: "Medication Assistant",
+    description: "Helps patients with medication schedules and adherence through timely reminders",
     image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
   },
   {
     category: "agriculture",
-    title: "Crop Pricing Updates",
-    description: "Delivers current market prices and buying opportunities to farmers via phone",
+    title: "Market Intelligence",
+    description: "Delivers current crop prices and buying opportunities to farmers",
     image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
   },
   {
     category: "agriculture",
-    title: "Weather Alerts",
-    description: "Alerts farmers about upcoming weather conditions that may affect crops",
+    title: "Weather Insights",
+    description: "Provides personalized weather forecasts and farming recommendations",
     image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
   },
   {
     category: "education",
-    title: "Student Support",
-    description: "Provides homework help and answers study questions for students",
+    title: "Learning Companion",
+    description: "Offers homework assistance and answers study questions for students",
     image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
   },
   {
     category: "education",
-    title: "Lesson Delivery",
-    description: "Delivers educational content and lessons via phone calls in local languages",
+    title: "Knowledge Delivery",
+    description: "Delivers educational content in an interactive, engaging format",
     image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
   }
 ];
@@ -53,9 +53,9 @@ const UseCases = () => {
     <section id="use-cases" className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Voice AI Use Cases</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">AI Assistant Use Cases</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Explore how AfriVoice AI agents are transforming service delivery across various sectors
+            Explore how AfriCopilot AI assistants are transforming service delivery across various sectors
           </p>
         </div>
         

@@ -17,19 +17,19 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-              <span className="text-sm font-medium text-gray-600">100+ active voice agents</span>
+              <span className="text-sm font-medium text-gray-600">100+ active AI assistants</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              AI Voice Agents for Africa
+              Your AI Teammate for Africa
             </h1>
             
             <p className="text-lg md:text-xl text-gray-600 max-w-xl">
-              Our AI agents can handle entire conversations via phone call, reliably and cost-effectively. No internet or smartphone required.
+              Our AI assistants work seamlessly across all channels — voice, chat, USSD — making intelligence accessible to everyone, everywhere.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Button asChild size="lg" className="text-base bg-afrivoice-blue hover:bg-afrivoice-blue/90">
+              <Button asChild size="lg" className="text-base bg-africopilot-blue hover:bg-africopilot-blue/90">
                 <Link to="/agent-setup">
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -42,8 +42,8 @@ const Hero = () => {
           
           <div className="w-full md:w-1/2">
             <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
-              <div className="aspect-video bg-afrivoice-blue/10 rounded-lg flex items-center justify-center">
-                <span className="text-afrivoice-blue font-medium">Voice Agent Demo</span>
+              <div className="aspect-video bg-africopilot-blue/10 rounded-lg flex items-center justify-center">
+                <span className="text-africopilot-blue font-medium">AI Assistant Demo</span>
               </div>
             </div>
           </div>

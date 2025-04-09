@@ -1,7 +1,7 @@
 
-# AfriVoice AI – Voice Agent Platform Dashboard
+# AfriCopilot AI – AI Assistant Platform Dashboard
 
-This project serves as the front-end dashboard for **AfriVoice AI**, a voice-first AI agent platform tailored for Africa. Built using React, TypeScript, and Tailwind CSS, this dashboard provides a clean, responsive UI foundation for managing voice agents, provider integrations, usage metrics, and more. It simulates live data interactions using centralized dummy data, paving the way for seamless backend API integration in future releases.
+This project serves as the front-end dashboard for **AfriCopilot AI**, a smart AI assistant platform tailored for Africa. Built using React, TypeScript, and Tailwind CSS, this dashboard provides a clean, responsive UI foundation for managing AI assistants, provider integrations, usage metrics, and more. It simulates live data interactions using centralized dummy data, paving the way for seamless backend API integration in future releases.
 
 ## Table of Contents
 
@@ -17,22 +17,22 @@ This project serves as the front-end dashboard for **AfriVoice AI**, a voice-fir
 
 ## Project Overview
 
-The AfriVoice AI Dashboard includes:
+The AfriCopilot AI Dashboard includes:
 
 - A top header with brand, notifications, user profile, and settings.
-- Sidebar navigation for managing Voice Agents, Provider Keys, Usage Stats, and the Voice Lab.
+- Sidebar navigation for managing AI Assistants, Provider Keys, Usage Stats, and the Voice Lab.
 - A modular, mobile-responsive layout optimized for expansion.
-- The **Voice Lab**, a prototype area for testing and simulating voice agent behavior.
+- The **Voice Lab**, a prototype area for testing and simulating AI assistant behavior.
 - Centralized dummy data used throughout the UI, designed to be replaced with live APIs.
 
-This dashboard enables developers, system admins, and stakeholders to visualize and manage AI-driven telephony workflows at scale.
+This dashboard enables developers, system admins, and stakeholders to visualize and manage AI-driven workflows at scale.
 
 ## Features
 
-- **Interactive Voice Agent Dashboard** – Manage AI agent flows, routes, and provider keys.
+- **Interactive AI Assistant Dashboard** – Manage AI agent flows, routes, and provider keys.
 - **Centralized Mock Data** – Easily swap dummy content with real-time API responses.
 - **Responsive Layout** – Optimized for both mobile and desktop users.
-- **Voice Lab** – Test environment for future real-time call simulations or speech AI integration.
+- **Voice Lab** – Test environment for real-time simulations or speech AI integration.
 - **Modular Codebase** – Reusable components, consistent structure, and scalable logic.
 - **Production-Ready UI** – Clean, maintainable TypeScript + Tailwind implementation.
 
@@ -58,8 +58,8 @@ This dashboard enables developers, system admins, and stakeholders to visualize 
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/afrivoice-dashboard.git
-   cd afrivoice-dashboard
+   git clone https://github.com/yourusername/africopilot-dashboard.git
+   cd africopilot-dashboard
    ```
 
 2. **Install Dependencies:**
@@ -77,16 +77,16 @@ This dashboard enables developers, system admins, and stakeholders to visualize 
 ## Usage
 
 - **Navigation:** Use the sidebar to access all core modules.
-- **Voice Lab:** Interact with placeholder voice agent workflows.
+- **Voice Lab:** Interact with placeholder AI assistant workflows.
 - **Data Source:** All content is driven by centralized dummy data—ideal for API integration in future versions.
 
 ## Future Enhancements
 
 - 🔌 **Live API Integration** – Replace mock data with live backend data via REST or GraphQL.
-- 🧠 **Conversational AI Hooks** – Integrate with voice AI engines like Deepgram, Whisper, or VAPI.
-- 🌍 **Local Language Support** – Expand to simulate or demo voice interactions in Swahili, Hausa, Amharic, etc.
-- 📈 **Analytics Dashboard** – Visualize agent performance, call data, and language usage metrics.
-- 🎛️ **Voice Flow Builder** – Drag-and-drop interface for creating IVR or AI call flows.
+- 🧠 **Conversational AI Hooks** – Integrate with AI engines like Deepgram, Whisper, or VAPI.
+- 🌍 **Local Language Support** – Expand to simulate or demo interactions in Swahili, Hausa, Amharic, etc.
+- 📈 **Analytics Dashboard** – Visualize assistant performance, call data, and language usage metrics.
+- 🎛️ **AI Flow Builder** – Drag-and-drop interface for creating conversational AI flows.
 
 ## Contributing
 
