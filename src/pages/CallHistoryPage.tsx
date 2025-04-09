@@ -78,7 +78,7 @@ const CallHistoryPage = () => {
               <SelectValue placeholder="Select agent" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Agents</SelectItem>
+              <SelectItem value="all">All Agents</SelectItem>
               <SelectItem value="agent1">New Agent</SelectItem>
               <SelectItem value="agent2">Customer Support</SelectItem>
               <SelectItem value="agent3">Sales Agent</SelectItem>
@@ -91,7 +91,7 @@ const CallHistoryPage = () => {
               <SelectValue placeholder="Select batch" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="">All Batches</SelectItem>
+              <SelectItem value="all">All Batches</SelectItem>
               <SelectItem value="batch1">Batch 1</SelectItem>
               <SelectItem value="batch2">Batch 2</SelectItem>
               <SelectItem value="batch3">Batch 3</SelectItem>
