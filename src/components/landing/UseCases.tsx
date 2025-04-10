@@ -14,37 +14,37 @@ const useCases = [
     category: "healthcare",
     title: "Patient Support",
     description: "Assists patients with appointment scheduling and health monitoring",
-    image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
+    image: "https://framerusercontent.com/images/qACNH2r91DMiHd8YwLGb7UmDziY.png"
   },
   {
     category: "healthcare",
     title: "Medication Assistant",
     description: "Helps patients with medication schedules and adherence through timely reminders",
-    image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
+    image: "https://framerusercontent.com/images/9hxum5wl73R1XhpD4uKYAKVxOc.png"
   },
   {
     category: "agriculture",
     title: "Market Intelligence",
     description: "Delivers current crop prices and buying opportunities to farmers",
-    image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-K9hWOxogNIvT6VMSD_hQEYnw-t4z0ddSRA&s"
   },
   {
     category: "agriculture",
     title: "Weather Insights",
     description: "Provides personalized weather forecasts and farming recommendations",
-    image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNWcI2mRfEVO63h5kY-8X7gkJ-q4Qu3uBOJ3VxVSev2KWuc33NreWDsVXB1lRfpNGnWD0&usqp=CAU"
   },
   {
     category: "education",
     title: "Learning Companion",
     description: "Offers homework assistance and answers study questions for students",
-    image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOT9RPMg-zUpd6TI3clIT21_GkWFM9EBNkuw&s"
   },
   {
     category: "education",
     title: "Knowledge Delivery",
     description: "Delivers educational content in an interactive, engaging format",
-    image: "/lovable-uploads/0ccc2fe4-093a-43eb-b030-b11359f01d7e.png"
+    image: "https://www.instancy.com/wp-content/uploads/2024/01/DALL%C2%B7E-2024-01-18-17.02.39-Image-2_-A-visual-representation-of-a-multi-modal-AI-agent-in-an-educational-setting.-The-AI-agent-is-a-sleek-advanced-computer-interface-shown-proce.png"
   }
 ];
 
