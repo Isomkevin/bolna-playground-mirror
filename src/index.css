@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -114,6 +113,33 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Apply justified text alignment to all text content */
+  p, h1, h2, h3, h4, h5, h6, li, blockquote, 
+  .text-content, .card-description, .card-content,
+  .dialog-description, span:not(.icon-content):not(.badge-content) {
+    text-align: justify;
+  }
+  
+  /* Keep certain elements with their original alignment */
+  .text-center, .text-right, .text-left, 
+  button *, .navigation-item *, 
+  .logo *, .icon *, .badge * {
+    text-align: initial;
+  }
+
+  /* Ensure headings that should be centered stay centered */
+  h1.text-center, h2.text-center, h3.text-center,
+  .section-title.text-center {
+    text-align: center;
+  }
+
+  /* Apply hyphenation for better justified text appearance */
+  @media (min-width: 768px) {
+    p, li, blockquote, .text-content {
+      hyphens: auto;
+    }
   }
 
   a {
