@@ -119,6 +119,11 @@
   a {
     @apply transition-colors;
   }
+  
+  /* Add text justification to paragraph elements */
+  p {
+    @apply text-justify;
+  }
 }
 
 /* AfriCopilot Custom Components & Utilities */
