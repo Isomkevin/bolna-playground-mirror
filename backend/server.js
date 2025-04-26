@@ -1,49 +1,81 @@
-// server.js
+import 'dotenv/config';
 import express from 'express';
+import http from 'http';
 import cors from 'cors';
-import axios from 'axios';
+import { Server } from 'socket.io';
+import { addUser, removeUser, getUser, getUsersInRoom } from './utils/users.js';
 
 const app = express();
-const PORT = 5000;
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+  },
+});
 
 app.use(cors());
 app.use(express.json());
 
-// Your Groq API Key (keep it secret!)
-const GROQ_API_KEY = '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';
+import apiRoutes from './routes/api.js';
 
-app.post('/api/chat', async (req, res) => {
-  const { prompt } = req.body;
+app.use('/api', apiRoutes);
 
-  try {
-    const groqResponse = await axios.post(
-      'https://api.groq.com/openai/v1/chat/completions',
-      {
-        model: 'mixtral-8x7b-32768', // or 'llama2-70b-4096', etc
-        messages: [
-          { role: 'system', content: 'You are a helpful assistant.' },
-          { role: 'user', content: prompt }
-        ],
-        temperature: 0.7,
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
-          'Content-Type': 'application/json',
-        }
-      }
-    );
 
-    const botReply = groqResponse.data.choices[0].message.content;
-    res.json({ reply: botReply });
+// Socket.IO connection
+io.on('connection', (socket) => {
+  console.log('New client connected');
 
-  } catch (error) {
-    console.error('Error calling Groq API:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Something went wrong!' });
-  }
+  socket.on('join', ({ username, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, username, room });
+
+    if (error) return callback(error);
+
+    socket.join(user.room);
+
+    socket.emit('message', {
+      user: 'admin',
+      text: `${user.username}, welcome to room ${user.room}.`,
+    });
+
+    socket.broadcast.to(user.room).emit('message', {
+      user: 'admin',
+      text: `${user.username} has joined the room.`,
+    });
+
+    io.to(user.room).emit('roomData', {
+      room: user.room,
+      users: getUsersInRoom(user.room),
+    });
+
+    callback();
+  });
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit('message', { user: user.username, text: message });
+    }
+
+    callback();
+  });
+
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id);
+
+    if (user) {
+      io.to(user.room).emit('message', {
+        user: 'admin',
+        text: `${user.username} has left.`,
+      });
+
+      io.to(user.room).emit('roomData', {
+        room: user.room,
+        users: getUsersInRoom(user.room),
+      });
+    }
+  });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
-
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

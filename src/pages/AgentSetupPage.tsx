@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Button } from '@/components/ui/button';
@@ -24,8 +23,12 @@ import {
   ArrowRight, Play, PauseCircle, ChevronDown, BarChart, Search,
   MessageSquare, Trash, Bell, AlertTriangle
 } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import axios from 'axios';
+
 
 const AgentSetupPage = () => {
+
   const [agent, setAgent] = useState({
     name: 'My New Agent',
     language: 'English',
@@ -53,6 +56,13 @@ const AgentSetupPage = () => {
     webhookEnabled: false,
     webhookUrl: ''
   });
+  const [chatLoading, setChatLoading] = useState(false);
+  const [chatResponse, setChatResponse] = useState<string | null>(null);
+  const [chatDialogOpen, setChatDialogOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState<{role: 'user'|'agent', content: string}[]>([]);
+  const [chatInput, setChatInput] = useState('');
+  const chatEndRef = useRef<HTMLDivElement>(null);
+
 
   // Added form state to manage more complex form validation
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -72,6 +82,102 @@ const AgentSetupPage = () => {
       title: "Testing agent",
       description: "Initiating a test call with your agent.",
     });
+  };
+
+  // Simulated chat send handler with full mock conversation fallback
+  const handleSendChat = async () => {
+    if (!chatInput.trim()) return;
+    const userMessage: { role: 'user' | 'agent'; content: string } = { role: 'user', content: chatInput };
+    setChatMessages((msgs) => [...msgs, userMessage]);
+    setChatLoading(true);
+    setChatInput('');
+    try {
+      const res = await axios.post('http://localhost:3000/api/test-prompt-444444', {
+        prompt: chatInput,
+      });
+      setChatMessages((msgs) => [
+        ...msgs,
+        { role: 'agent', content: res.data.reply || "No response from agent." }
+      ]);
+    } catch (err) {
+      // Full mock interaction fallback
+      const lower = chatInput.toLowerCase();
+      let mockReply = "";
+
+      if (lower.includes("hello") || lower.includes("hi")) {
+        mockReply = "Hello! How can I assist you today?";
+      } else if (lower.includes("who are you")) {
+        mockReply = "I'm AfriCopilot AI, your smart assistant for Africa.";
+      } else if (lower.includes("what can you do")) {
+        mockReply = "I can answer questions, provide information, and help with tasks in your local language.";
+      } else if (lower.includes("price")) {
+        mockReply = "The current price is $0.06 per minute for calls.";
+      } else if (lower.includes("languages")) {
+        mockReply = "I support English, Swahili, Hausa, Yoruba, and more African languages!";
+      } else if (lower.includes("help")) {
+        mockReply = "I'm here to help! You can ask me about our services, pricing, or supported languages.";
+      } else if (lower.includes("bye") || lower.includes("goodbye")) {
+        mockReply = "Goodbye! Have a wonderful day.";
+      } else if (lower.includes("thank")) {
+        mockReply = "You're welcome! Let me know if you need anything else.";
+      } else if (lower.includes("agent")) {
+        mockReply = "I'm your AI agent, always ready to assist you.";
+      } else if (lower.includes("call")) {
+        mockReply = "You can initiate a call by clicking the 'Test Call' button.";
+      } else {
+        mockReply = "Sorry, I'm unable to connect to the Voice and Snentiment agents right now. This is your plan B. Try asking about pricing, languages, or say hello!";
+      }
+
+      setChatMessages((msgs) => [
+        ...msgs,
+        { role: 'agent', content: mockReply }
+      ]);
+    } finally {
+      setChatLoading(false);
+      setTimeout(() => {
+        chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
+  // Open chat dialog and reset messages
+  const handleOpenChatDialog = () => {
+    handleSendChat();
+    setChatMessages([]);
+    setChatDialogOpen(true);
+  };
+
+  const handleTestPromptChat = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    event.preventDefault();
+    if (!agent.prompt.trim()) {
+      toast({
+        title: "Error",
+        description: "Please provide a valid prompt to test.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setChatLoading(true);
+    setChatResponse(null);
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/test-prompt', {
+        prompt: agent.prompt,
+      });
+
+      setChatResponse(response.data.reply || "No response received from the agent.");
+      setChatDialogOpen(true);
+    } catch (error) {
+      console.error("Error testing prompt:", error);
+      toast({
+        title: "Error",
+        description: "Failed to test the prompt. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setChatLoading(false);
+    }
   };
 
   return (
@@ -784,9 +890,21 @@ cash : If they are paying by cash yield cash. Else yield NA"
               </div>
               
               <div className="flex gap-4">
-                <Button variant="outline" className="text-sm">Use chat to test agent & prompts</Button>
-                <Button className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white text-sm">Test your prompt via chat</Button>
-              </div>
+                  <Button
+                    variant="outline"
+                    className="text-sm"
+                    onClick={handleOpenChatDialog}
+                  >
+                    Use chat to test agent & prompts
+                  </Button>
+                  <Button
+                    className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white text-sm"
+                    onClick={handleTestPromptChat}
+                    disabled={chatLoading}
+                  >
+                    {chatLoading ? "Testing..." : "Test your prompt via chat"}
+                  </Button>
+                </div>
               
               <div>
                 <p className="text-sm mb-2">Have a web call with your agent to test & experience it (Beta)</p>
@@ -813,6 +931,61 @@ cash : If they are paying by cash yield cash. Else yield NA"
           </div>
         </div>
       </div>
+
+      {/* Chat Response Modal */}
+      <Dialog open={chatDialogOpen} onOpenChange={setChatDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Agent Response</DialogTitle>
+          </DialogHeader>
+          <div className="py-4 min-h-[60px]">
+            {/* Chat simulation UI */}
+            <div className="max-h-[300px] overflow-y-auto flex flex-col gap-2 bg-gray-50 rounded border border-gray-100 px-2">
+              {chatMessages.length === 0 && (
+                <span className="text-gray-400 text-sm text-center py-8">Start the conversation…</span>
+              )}
+              {chatMessages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div
+                    className={`rounded px-3 py-2 max-w-[80%] text-sm ${
+                      msg.role === 'user'
+                        ? 'bg-africopilot-blue text-white'
+                        : 'bg-white border border-gray-200 text-gray-900'
+                    }`}
+                  >
+                    {msg.content}
+                  </div>
+                </div>
+              ))}
+              <div ref={chatEndRef} />
+            </div>
+            <form
+              className="flex gap-2 pt-2"
+              onSubmit={e => {
+                e.preventDefault();
+                handleSendChat();
+              }}
+            >
+              <Input
+                value={chatInput}
+                onChange={e => setChatInput(e.target.value)}
+                placeholder="Type your message…"
+                disabled={chatLoading}
+                className="flex-1"
+              />
+              <Button type="submit" disabled={chatLoading || !chatInput.trim()}>
+                {chatLoading ? "Sending..." : "Send"}
+              </Button>
+            </form>
+          </div>
+          <DialogFooter>
+            <Button onClick={() => setChatDialogOpen(false)}>Close</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </DashboardLayout>
   );
 };
