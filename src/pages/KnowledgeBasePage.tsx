@@ -3,11 +3,11 @@ import React, { useState } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Button } from '@/components/ui/button';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
-import { Loader2, Trash2, Upload } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
+import { Loader2, Trash2, Upload, FileText } from 'lucide-react';
 
 const KnowledgeBasePage = () => {
   const [isUploadDialogOpen, setIsUploadDialogOpen] = useState(false);
@@ -66,6 +66,7 @@ const KnowledgeBasePage = () => {
         <Button 
           className="bg-afrivoice-blue hover:bg-afrivoice-blue/90 text-white flex items-center gap-2"
           onClick={() => setIsUploadDialogOpen(true)}
+          data-testid="upload-pdf-button"
         >
           <Upload className="h-4 w-4" />
           Upload PDF
@@ -124,9 +125,12 @@ const KnowledgeBasePage = () => {
       
       {/* Upload PDF Dialog */}
       <Dialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen}>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-[425px]" data-testid="upload-pdf-modal">
           <DialogHeader>
             <DialogTitle>Upload PDF to Knowledge Base</DialogTitle>
+            <DialogDescription>
+              Upload PDFs to use as knowledge sources for your voice agents.
+            </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
@@ -136,27 +140,38 @@ const KnowledgeBasePage = () => {
                 type="file"
                 accept=".pdf"
                 onChange={handleFileChange}
+                data-testid="pdf-file-input"
               />
-              {selectedFile && (
-                <p className="text-sm text-muted-foreground">
+              {selectedFile ? (
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <FileText className="h-4 w-4" />
                   Selected file: {selectedFile.name}
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground">
+                  No file chosen
                 </p>
               )}
             </div>
             <div className="border rounded-md p-3 bg-blue-50">
               <p className="text-sm text-blue-700">
-                Upload PDFs to use as knowledge sources for your voice agents. The contents will be processed and made available to your agents during conversations.
+                You can refer RAG APIs from here. The contents will be processed and made available to your agents during conversations.
               </p>
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setIsUploadDialogOpen(false)}>
+            <Button 
+              variant="outline" 
+              onClick={() => setIsUploadDialogOpen(false)}
+              data-testid="cancel-upload"
+            >
               Cancel
             </Button>
             <Button 
               onClick={handleUpload}
               className="bg-afrivoice-blue hover:bg-afrivoice-blue/90"
               disabled={isUploading || !selectedFile}
+              data-testid="confirm-upload"
             >
               {isUploading ? (
                 <>

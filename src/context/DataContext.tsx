@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, ReactNode, useState } from 'react';
 import * as dashboardData from '@/data/dashboardData';
 import { toast } from '@/hooks/use-toast';
@@ -8,7 +7,7 @@ type DataContextType = {
   voices: dashboardData.Voice[];
   providers: dashboardData.Provider[];
   phoneNumbers: dashboardData.PhoneNumber[];
-  apiKeys: dashboardData.ApiKey[];
+  apiKeys: ApiKey[];
   knowledgeBaseEntries: dashboardData.KnowledgeBaseEntry[];
   batchProcesses: dashboardData.BatchProcess[];
   voiceLabSamples: dashboardData.VoiceLabSample[];
@@ -17,21 +16,50 @@ type DataContextType = {
   // Mock actions
   addVoice: (voice: Omit<dashboardData.Voice, 'id'>) => void;
   connectProvider: (providerId: number) => void;
-  createApiKey: () => void;
+  createApiKey: (keyData: { apiKey: string, baseUrl: string, apiVersion: string }) => void;
   uploadKnowledgeBase: (filename: string) => void;
   createBatchProcess: (name: string) => void;
   buyPhoneNumber: () => void;
   createVoiceLabSample: (text: string, voice: string) => void;
 };
 
+interface ApiKey {
+  id: string;
+  identifier: string;
+  key: string;
+  lastAccessed: string | null;
+  created: string;
+  baseUrl?: string;
+  apiVersion?: string;
+}
+
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
-export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   // Initialize state with data from dashboardData
   const [voices, setVoices] = useState(dashboardData.voices);
   const [providers, setProviders] = useState(dashboardData.providers);
   const [phoneNumbers, setPhoneNumbers] = useState(dashboardData.phoneNumbers);
-  const [apiKeys, setApiKeys] = useState(dashboardData.apiKeys);
+  const [apiKeys, setApiKeys] = useState<ApiKey[]>([
+    {
+      id: '1',
+      identifier: 'production-key',
+      key: 'sk-prod-e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6',
+      lastAccessed: '2025-05-05 14:23:45',
+      created: '2025-04-15T12:00:00.000Z',
+      baseUrl: 'https://api.bolna.ai',
+      apiVersion: 'v1'
+    },
+    {
+      id: '2',
+      identifier: 'testing-key',
+      key: 'sk-test-1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7',
+      lastAccessed: '2025-05-04 09:15:22',
+      created: '2025-04-20T15:30:00.000Z',
+      baseUrl: 'https://sandbox.bolna.ai',
+      apiVersion: 'v1'
+    }
+  ]);
   const [knowledgeBaseEntries, setKnowledgeBaseEntries] = useState(dashboardData.knowledgeBaseEntries);
   const [batchProcesses, setBatchProcesses] = useState(dashboardData.batchProcesses);
   const [voiceLabSamples, setVoiceLabSamples] = useState(dashboardData.voiceLabSamples);
@@ -64,18 +92,23 @@ export const DataProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     });
   };
 
-  const createApiKey = () => {
-    const newApiKey = {
+  const createApiKey = (keyData: { apiKey: string, baseUrl: string, apiVersion: string }) => {
+    const newKey: ApiKey = {
       id: `key-${Date.now()}`,
-      identifier: `api-key-${apiKeys.length + 1}`,
-      lastAccessed: 'Never',
-      created: new Date().toISOString()
+      identifier: `key-${Math.random().toString(36).substring(2, 7)}`,
+      key: keyData.apiKey || `sk-${Math.random().toString(36).substring(2, 10)}`,
+      lastAccessed: null,
+      created: new Date().toISOString(),
+      baseUrl: keyData.baseUrl,
+      apiVersion: keyData.apiVersion
     };
-    setApiKeys([...apiKeys, newApiKey]);
-    toast({
-      title: "API Key Created",
-      description: "Your new API key has been generated."
-    });
+    
+    setApiKeys(prev => [...prev, newKey]);
+    return newKey;
+  };
+
+  const deleteApiKey = (keyId: string) => {
+    setApiKeys(prev => prev.filter(key => key.id !== keyId));
   };
 
   const uploadKnowledgeBase = (filename: string) => {
