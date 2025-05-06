@@ -206,7 +206,7 @@ const AgentSetupPage = () => {
               </div>
             </div>
             <div className="p-4 flex justify-between">
-              <Button className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white flex items-center gap-2">
+              <Button className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-black flex items-center gap-2">
                 <Plus className="h-3 w-3" />
                 Add Agent
               </Button>
@@ -277,7 +277,7 @@ const AgentSetupPage = () => {
                   Assign inbound agent
                 </Button>
                 <Button 
-                  className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white flex items-center gap-2"
+                  className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-black flex items-center gap-2"
                   onClick={() => setGetCallModalOpen(true)}
                   data-testid="get-call-from-agent-button"
                 >
