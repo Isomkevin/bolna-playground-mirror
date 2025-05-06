@@ -9,6 +9,7 @@ import { Link2, Check, X, Settings, RefreshCw, ExternalLink, Plus } from 'lucide
 import { useData } from '@/context/DataContext';
 import { toast } from '@/hooks/use-toast';
 import { Card, CardContent } from '@/components/ui/card';
+import ProviderConnectModal from '@/components/providers/ProviderConnectModal';
 
 interface Provider {
   id: number;
@@ -124,6 +125,8 @@ const ProvidersPage = () => {
   const { providers: allProviders, connectProvider } = useData();
   const [searchQuery, setSearchQuery] = useState('');
   const [activeTab, setActiveTab] = useState('all');
+  const [selectedProvider, setSelectedProvider] = useState<Provider | null>(null);
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
   
   // Add mock descriptions and categories for demonstration
   const providersWithDetails = allProviders.map(provider => ({
@@ -137,11 +140,21 @@ const ProvidersPage = () => {
     (activeTab === 'all' || provider.category.toLowerCase() === activeTab.toLowerCase())
   );
 
-  const handleConnect = (providerId: number) => {
+  const handleOpenConnectModal = (providerId: number) => {
+    const provider = providersWithDetails.find(p => p.id === providerId);
+    if (provider) {
+      setSelectedProvider(provider);
+      setIsConnectModalOpen(true);
+    }
+  };
+
+  const handleConnectSubmit = (providerId: number, formData: Record<string, string>) => {
+    console.log("Connecting provider:", providerId, "with data:", formData);
     connectProvider(providerId);
+    setIsConnectModalOpen(false);
     toast({
-      title: "Connection initiated",
-      description: "Connecting to provider...",
+      title: "Connection successful",
+      description: "Your provider has been connected successfully.",
     });
   };
 
@@ -199,6 +212,7 @@ const ProvidersPage = () => {
             <Button 
               onClick={handleAddNew}
               className="bg-blue-500 hover:bg-blue-600 text-white flex items-center gap-2"
+              data-testid="add-new-integration"
             >
               <Plus className="h-4 w-4" />
               Add New Integration
@@ -212,13 +226,20 @@ const ProvidersPage = () => {
           <ProviderCard 
             key={provider.id} 
             provider={provider}
-            onConnect={handleConnect}
+            onConnect={() => handleOpenConnectModal(provider.id)}
             onRefresh={handleRefresh}
             onConfigure={handleConfigure}
             onLearnMore={handleLearnMore}
           />
         ))}
       </div>
+
+      <ProviderConnectModal 
+        provider={selectedProvider}
+        isOpen={isConnectModalOpen}
+        onOpenChange={setIsConnectModalOpen}
+        onSubmit={handleConnectSubmit}
+      />
     </DashboardLayout>
   );
 };
