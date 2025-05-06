@@ -17,6 +17,7 @@ type DataContextType = {
   addVoice: (voice: Omit<dashboardData.Voice, 'id'>) => void;
   connectProvider: (providerId: number) => void;
   createApiKey: (keyData: { apiKey: string, baseUrl: string, apiVersion: string }) => void;
+  deleteApiKey: (keyId: string) => void;
   uploadKnowledgeBase: (filename: string) => void;
   createBatchProcess: (name: string) => void;
   buyPhoneNumber: () => void;
@@ -31,6 +32,11 @@ interface ApiKey {
   created: string;
   baseUrl?: string;
   apiVersion?: string;
+}
+
+// Define DataProviderProps interface
+interface DataProviderProps {
+  children: ReactNode;
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
@@ -188,6 +194,7 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
       addVoice,
       connectProvider,
       createApiKey,
+      deleteApiKey,
       uploadKnowledgeBase,
       createBatchProcess,
       buyPhoneNumber,

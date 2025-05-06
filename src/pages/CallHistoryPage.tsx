@@ -5,18 +5,20 @@ import BuyNumberModal from '@/components/call-history/BuyNumberModal';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Plus } from 'lucide-react';
+import { useData } from '@/context/DataContext';
+import { Plus, Phone } from 'lucide-react';
 
 const CallHistoryPage = () => {
   const [isBuyNumberModalOpen, setIsBuyNumberModalOpen] = useState(false);
   const { toast } = useToast();
+  const { phoneNumbers, buyPhoneNumber } = useData();
 
   const handlePurchaseNumber = (number: string, country: string) => {
+    buyPhoneNumber(); // Use the context method to add a number
     toast({
       title: "Number Purchased",
       description: `Successfully purchased ${number}`,
     });
-    // In a real app, this would call an API to purchase the number
   };
 
   return (
@@ -47,9 +49,26 @@ const CallHistoryPage = () => {
                 <Plus className="h-4 w-4 mr-1" /> Buy Number
               </Button>
             </div>
-            <div className="text-sm text-gray-500">
-              No phone numbers purchased yet.
-            </div>
+            
+            {phoneNumbers.length > 0 ? (
+              <div className="space-y-2">
+                {phoneNumbers.map((phone) => (
+                  <div key={phone.id} className="p-2 border rounded-md flex justify-between items-center">
+                    <div>
+                      <p className="font-mono text-sm">{phone.number}</p>
+                      <p className="text-xs text-gray-500">Agent: {phone.agent}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500">{phone.monthlyRent}/month</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-sm text-gray-500">
+                No phone numbers purchased yet.
+              </div>
+            )}
             
             <div className="mt-6">
               <h4 className="text-sm font-medium mb-2">Account Balance</h4>

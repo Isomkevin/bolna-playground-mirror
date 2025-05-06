@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom'; 
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -24,11 +25,11 @@ import {
   MessageSquare, Trash, Bell, AlertTriangle
 } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import AssignInboundAgentModal from '@/components/agent-setup/AssignInboundAgentModal';
+import GetCallFromAgentModal from '@/components/agent-setup/GetCallFromAgentModal';
 import axios from 'axios';
 
-
 const AgentSetupPage = () => {
-
   const [agent, setAgent] = useState({
     name: 'My New Agent',
     language: 'English',
@@ -63,9 +64,13 @@ const AgentSetupPage = () => {
   const [chatInput, setChatInput] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-
   // Added form state to manage more complex form validation
   const { register, handleSubmit, formState: { errors } } = useForm();
+
+  // Add new state variables for the modals
+  const [assignAgentModalOpen, setAssignAgentModalOpen] = useState(false);
+  const [getCallModalOpen, setGetCallModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Function to handle saving agent
   const onSaveAgent = (data) => {
@@ -145,6 +150,11 @@ const AgentSetupPage = () => {
     handleSendChat();
     setChatMessages([]);
     setChatDialogOpen(true);
+  };
+
+  // Function to handle redirecting to phone numbers page
+  const handleBuyPhoneNumbers = () => {
+    navigate('/phone-numbers');
   };
 
   const handleTestPromptChat = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -257,15 +267,29 @@ const AgentSetupPage = () => {
                 </div>
               </div>
               <div className="ml-auto flex flex-col gap-2">
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  className="flex items-center gap-2"
+                  onClick={() => setAssignAgentModalOpen(true)}
+                  data-testid="assign-inbound-agent-button"
+                >
                   <Users className="h-4 w-4" />
                   Assign inbound agent
                 </Button>
-                <Button className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white flex items-center gap-2">
+                <Button 
+                  className="bg-africopilot-blue hover:bg-africopilot-blue/90 text-white flex items-center gap-2"
+                  onClick={() => setGetCallModalOpen(true)}
+                  data-testid="get-call-from-agent-button"
+                >
                   <Phone className="h-4 w-4" />
                   Get call from agent
                 </Button>
-                <Button variant="outline" className="flex items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  className="flex items-center gap-2"
+                  onClick={handleBuyPhoneNumbers}
+                  data-testid="buy-phone-numbers-button"
+                >
                   <Phone className="h-4 w-4" />
                   Buy phone numbers
                 </Button>
@@ -986,6 +1010,19 @@ cash : If they are paying by cash yield cash. Else yield NA"
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Assign Inbound Agent Modal */}
+      <AssignInboundAgentModal
+        isOpen={assignAgentModalOpen}
+        onOpenChange={setAssignAgentModalOpen}
+        agentName={agent.name}
+      />
+
+      {/* Get Call From Agent Modal */}
+      <GetCallFromAgentModal
+        isOpen={getCallModalOpen}
+        onOpenChange={setGetCallModalOpen}
+      />
     </DashboardLayout>
   );
 };
