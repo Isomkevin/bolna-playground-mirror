@@ -140,43 +140,43 @@ export const providers: Provider[] = [
   { 
     id: 1, 
     name: 'Azure OpenAI', 
-    logo: '/lovable-uploads/fa567b85-828a-41d3-abe8-91bf8f14dba0.png' 
+    logo: 'https://platform.bolna.ai/images/azure.svg' 
   },
   { 
     id: 2, 
     name: 'Cal.com', 
-    logo: '/lovable-uploads/210bb858-1f0b-4398-b25d-b76e551d89bd.png' 
+    logo: 'https://cal.com/android-chrome-512x512.png' 
   },
   { 
     id: 3, 
     name: 'Cartesia', 
-    logo: '/lovable-uploads/ab8dc577-0efe-4699-9228-a348e5f67fea.png' 
+    logo: 'https://files.buildwithfern.com/https://cartesia.docs.buildwithfern.com/2025-04-28T22:13:39.651Z/logo/icon.png' 
   },
   { 
     id: 4, 
     name: 'Deepgram', 
-    logo: '/lovable-uploads/6c3a56d9-2703-4a26-8dc7-b4b093bada90.png'  
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAWAzPRghWCTmMQqYbarEXQ-8EZ7QzAGBMvw&s'  
   },
   { 
     id: 5, 
     name: 'ElevenLabs', 
-    logo: '/lovable-uploads/9bf7ef3d-4537-4e5d-b63b-1fefd4287669.png',
+    logo: 'https://11labs-nonprd-15f22c1d.s3.eu-west-3.amazonaws.com/a2ea339b-8b5e-41bb-b706-24eda8a4c9e3/elevenlabs-symbol.svg',
     connected: true
   },
   { 
     id: 6, 
     name: 'OpenAI', 
-    logo: '/lovable-uploads/a9a01690-3800-4811-b2c4-6e2144c3dfcc.png'  
+    logo: 'https://static.vecteezy.com/system/resources/previews/022/227/364/non_2x/openai-chatgpt-logo-icon-free-png.png'  
   },
   { 
     id: 7, 
     name: 'Perplexity', 
-    logo: '/lovable-uploads/faa0b433-7424-4a2a-ae29-30a343a64c34.png'  
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdFSv1lxsEwowysGSVpPBM_VMwocDGqxqRyg&s'  
   },
   { 
     id: 8, 
     name: 'Plivo', 
-    logo: '/lovable-uploads/faa0b433-7424-4a2a-ae29-30a343a64c34.png'  
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTunYHxFW_oPvjamQZ449Mv5n8KX6bWHKUFog&s'  
   },
   { 
     id: 9, 

@@ -61,7 +61,8 @@ const PhoneNumbersPage = () => {
     >
       <div className="mb-6 flex justify-end">
         <Button 
-          className="bg-afrivoice-blue hover:bg-afrivoice-blue/90 text-white"
+          // className="bg-afrivoice-blue hover:bg-afrivoice-blue/90 text-white"
+          className="bg-blue-500 hover:bg-blue-500/90 text-white"
           onClick={() => setIsDialogOpen(true)}
         >
           Buy phone number
