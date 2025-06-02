@@ -1,102 +1,123 @@
 
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle, Users, Calendar, MessageSquare, Phone, Activity, FileText } from "lucide-react";
 
-const useCaseCategories = [
-  { value: "all", label: "All" },
-  { value: "healthcare", label: "Healthcare" },
-  { value: "agriculture", label: "Agriculture" },
-  { value: "education", label: "Education" }
-];
-
-const useCases = [
+const features = [
   {
-    category: "healthcare",
-    title: "Patient Support",
-    description: "Assists patients with appointment scheduling and health monitoring",
-    image: "https://framerusercontent.com/images/qACNH2r91DMiHd8YwLGb7UmDziY.png"
+    icon: <Users className="h-8 w-8 text-blue-600" />,
+    title: "Patient Care",
+    description: "24/7 patient support and monitoring"
   },
   {
-    category: "healthcare",
-    title: "Medication Assistant",
-    description: "Helps patients with medication schedules and adherence through timely reminders",
-    image: "https://framerusercontent.com/images/9hxum5wl73R1XhpD4uKYAKVxOc.png"
+    icon: <Calendar className="h-8 w-8 text-blue-600" />,
+    title: "Appointment Scheduling",
+    description: "Automated scheduling and reminders"
   },
   {
-    category: "agriculture",
-    title: "Market Intelligence",
-    description: "Delivers current crop prices and buying opportunities to farmers",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-K9hWOxogNIvT6VMSD_hQEYnw-t4z0ddSRA&s"
+    icon: <MessageSquare className="h-8 w-8 text-blue-600" />,
+    title: "Telehealth Consultations",
+    description: "Virtual consultations and follow-ups"
   },
   {
-    category: "agriculture",
-    title: "Weather Insights",
-    description: "Provides personalized weather forecasts and farming recommendations",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNWcI2mRfEVO63h5kY-8X7gkJ-q4Qu3uBOJ3VxVSev2KWuc33NreWDsVXB1lRfpNGnWD0&usqp=CAU"
+    icon: <Phone className="h-8 w-8 text-blue-600" />,
+    title: "Emergency Response",
+    description: "Immediate triage and emergency protocols"
   },
   {
-    category: "education",
-    title: "Learning Companion",
-    description: "Offers homework assistance and answers study questions for students",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOT9RPMg-zUpd6TI3clIT21_GkWFM9EBNkuw&s"
+    icon: <Activity className="h-8 w-8 text-blue-600" />,
+    title: "Health Monitoring",
+    description: "Continuous patient health tracking"
   },
   {
-    category: "education",
-    title: "Knowledge Delivery",
-    description: "Delivers educational content in an interactive, engaging format",
-    image: "https://www.instancy.com/wp-content/uploads/2024/01/DALL%C2%B7E-2024-01-18-17.02.39-Image-2_-A-visual-representation-of-a-multi-modal-AI-agent-in-an-educational-setting.-The-AI-agent-is-a-sleek-advanced-computer-interface-shown-proce.png"
+    icon: <FileText className="h-8 w-8 text-blue-600" />,
+    title: "Medical Documentation",
+    description: "Automated record keeping and reports"
   }
 ];
 
 const UseCases = () => {
   return (
-    <section id="use-cases" className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">AI Assistant Use Cases</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Explore how AfriCopilot AI assistants are transforming service delivery across various sectors
-          </p>
-        </div>
-        
-        <Tabs defaultValue="all" className="w-full">
-          <div className="flex justify-center mb-8">
-            <TabsList>
-              {useCaseCategories.map((category) => (
-                <TabsTrigger key={category.value} value={category.value}>
-                  {category.label}
-                </TabsTrigger>
+    <section id="use-cases" className="py-20 bg-white">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                Supercharge every function
+              </h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                From patient care to administrative tasks, our AI agents handle everything your healthcare practice needs to run smoothly.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <Card key={index} className="bg-gray-50 border-0 p-4 hover:bg-blue-50 transition-colors duration-300">
+                  <CardContent className="p-0 flex items-start space-x-4">
+                    <div className="flex-shrink-0">
+                      {feature.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">{feature.title}</h3>
+                      <p className="text-sm text-gray-600">{feature.description}</p>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
-            </TabsList>
+            </div>
           </div>
           
-          {useCaseCategories.map((category) => (
-            <TabsContent key={category.value} value={category.value} className="mt-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {useCases
-                  .filter(useCase => category.value === "all" || useCase.category === category.value)
-                  .map((useCase, index) => (
-                    <div key={index} className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-                      <div className="aspect-[4/3] bg-gray-100 relative">
-                        {useCase.image && (
-                          <img 
-                            src={useCase.image} 
-                            alt={useCase.title}
-                            className="w-full h-full object-cover"
-                          />
-                        )}
-                      </div>
-                      <div className="p-6">
-                        <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
-                        <p className="text-gray-600 mb-4">{useCase.description}</p>
-                        <Button variant="outline" size="sm">Learn more</Button>
-                      </div>
-                    </div>
-                  ))}
+          <div className="space-y-8">
+            <Card className="bg-gradient-to-br from-blue-600 to-blue-700 text-white border-0 rounded-3xl overflow-hidden">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6">Transform into an AI Clinic that runs on autopilot</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
+                    <span>Reduce operational costs by 80%</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
+                    <span>Improve patient satisfaction scores</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
+                    <span>24/7 availability for patient care</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
+                    <span>HIPAA compliant and secure</span>
+                  </div>
+                </div>
+                <Button className="mt-6 bg-white text-blue-600 hover:bg-gray-100 rounded-full px-8">
+                  Learn More
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <div className="grid grid-cols-3 gap-4">
+              <div className="aspect-square bg-blue-100 rounded-2xl flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full mx-auto mb-2"></div>
+                  <p className="text-sm font-medium text-gray-700">Dr. AI Assistant</p>
+                </div>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
+              <div className="aspect-square bg-blue-100 rounded-2xl flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full mx-auto mb-2"></div>
+                  <p className="text-sm font-medium text-gray-700">Schedule Bot</p>
+                </div>
+              </div>
+              <div className="aspect-square bg-blue-100 rounded-2xl flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-blue-600 rounded-full mx-auto mb-2"></div>
+                  <p className="text-sm font-medium text-gray-700">Care Monitor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

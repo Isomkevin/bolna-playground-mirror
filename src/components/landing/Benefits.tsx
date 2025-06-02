@@ -1,52 +1,67 @@
 
-import { CheckCircle } from "lucide-react";
-
-const benefits = [
-  "Works across multiple channels - voice, chat, and more",
-  "Supports multiple African languages",
-  "Available 24/7 as your reliable AI teammate",
-  "Scalable to handle thousands of concurrent interactions",
-  "Integrates with Africa's Talking and other local providers",
-  "Custom workflows tailored to your specific needs",
-  "Detailed analytics and conversation insights",
-  "Pay-as-you-go pricing model with no upfront costs"
-];
+import { CheckCircle, Users, Clock, Shield } from "lucide-react";
 
 const Benefits = () => {
   return (
-    <section id="benefits" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="w-full md:w-1/2">
-            <div className="bg-gradient-to-tr from-africopilot-blue to-blue-400 rounded-2xl p-1">
-              <div className="bg-white rounded-xl overflow-hidden">
-                <img 
-                  src="/lovable-uploads/493b10a9-9de1-4247-80dd-230bd186cbb8.png" 
-                  alt="AfriCopilot Benefits" 
-                  className="w-full h-auto"
-                />
-              </div>
+    <section id="benefits" className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="text-center text-white mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Autonomous AI agents to run your practice on autopilot
+          </h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-white">
+          <div className="space-y-4">
+            <div className="flex justify-center">
+              <Users className="h-16 w-16" />
+            </div>
+            <div className="text-5xl font-bold">52+</div>
+            <div className="text-xl opacity-90">AI Specialists</div>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex justify-center">
+              <Clock className="h-16 w-16" />
+            </div>
+            <div className="text-5xl font-bold">24+</div>
+            <div className="text-xl opacity-90">Hours Available</div>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex justify-center">
+              <Shield className="h-16 w-16" />
+            </div>
+            <div className="text-5xl font-bold">70+</div>
+            <div className="text-xl opacity-90">Specialties Covered</div>
+          </div>
+        </div>
+        
+        <div className="mt-20 text-center text-white space-y-8">
+          <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed">
+            AI agents don't take days off. They're faster, more intelligent, and more reliable.
+          </p>
+          <p className="text-lg opacity-90 max-w-3xl mx-auto">
+            They work on your of unpredictable situations, with unlimited bandwidth.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2">10X</div>
+              <div className="text-lg opacity-90">Faster Response</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2">10X</div>
+              <div className="text-lg opacity-90">More Efficient</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-bold mb-2">100X</div>
+              <div className="text-lg opacity-90">Cost Effective</div>
             </div>
           </div>
           
-          <div className="w-full md:w-1/2 space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose AfriCopilot AI?
-            </h2>
-            
-            <p className="text-lg text-gray-600">
-              Our platform is designed specifically for African contexts, providing a supportive AI teammate 
-              that works seamlessly across all devices and connectivity levels.
-            </p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-700">{benefit}</span>
-                </div>
-              ))}
-            </div>
+          <div className="mt-12">
+            <p className="text-2xl font-bold">ROI is in our DNA.</p>
           </div>
         </div>
       </div>
