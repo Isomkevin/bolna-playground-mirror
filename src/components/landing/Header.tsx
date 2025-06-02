@@ -11,35 +11,58 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className="border-b bg-white sticky top-0 z-50 shadow-sm">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between max-w-7xl">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-            <Phone size={24} className="text-white" />
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between max-w-6xl">
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+            <Phone size={18} className="text-white" />
           </div>
-          <span className="text-2xl font-bold text-gray-900">AfriCopilot</span>
+          <span className="text-xl font-bold text-gray-900">AfriCopilot</span>
         </div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link to="/#features" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Features</Link>
-          <Link to="/#use-cases" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Solutions</Link>
-          <Link to="/#benefits" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Benefits</Link>
-          <Link to="/dashboard/developers" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">API</Link>
+        <nav className="hidden md:flex items-center space-x-6">
+          <button 
+            onClick={() => scrollToSection('features')} 
+            className="font-medium text-gray-700 hover:text-blue-600 transition-colors text-sm"
+          >
+            Features
+          </button>
+          <button 
+            onClick={() => scrollToSection('use-cases')} 
+            className="font-medium text-gray-700 hover:text-blue-600 transition-colors text-sm"
+          >
+            Solutions
+          </button>
+          <button 
+            onClick={() => scrollToSection('benefits')} 
+            className="font-medium text-gray-700 hover:text-blue-600 transition-colors text-sm"
+          >
+            Benefits
+          </button>
+          <Link to="/dashboard/developers" className="font-medium text-gray-700 hover:text-blue-600 transition-colors text-sm">API</Link>
         </nav>
         
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
           <Button 
             asChild 
             variant="outline" 
-            className="hidden sm:inline-flex border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 rounded-full px-6"
+            className="hidden sm:inline-flex border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 rounded-full px-4 text-sm"
           >
             <Link to="/dashboard">Log In</Link>
           </Button>
           <Button 
             asChild 
-            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 shadow-lg"
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 shadow-lg text-sm"
           >
             <Link to="/dashboard">Get Started</Link>
           </Button>
@@ -53,9 +76,9 @@ const Header = () => {
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5" />
             ) : (
-              <Menu className="h-6 w-6" />
+              <Menu className="h-5 w-5" />
             )}
           </Button>
         </div>
@@ -64,42 +87,39 @@ const Header = () => {
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t animate-fade-in">
-          <nav className="container mx-auto px-4 py-6 flex flex-col space-y-4">
-            <Link 
-              to="/#features" 
-              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-3">
+            <button 
+              onClick={() => scrollToSection('features')} 
+              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left text-sm"
             >
               Features
-            </Link>
-            <Link 
-              to="/#use-cases" 
-              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => scrollToSection('use-cases')} 
+              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left text-sm"
             >
               Solutions
-            </Link>
-            <Link 
-              to="/#benefits" 
-              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+            </button>
+            <button 
+              onClick={() => scrollToSection('benefits')} 
+              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left text-sm"
             >
               Benefits
-            </Link>
+            </button>
             <Link 
               to="/dashboard/developers" 
-              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors"
+              className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm"
               onClick={() => setMobileMenuOpen(false)}
             >
               API
             </Link>
             <Link 
               to="/dashboard" 
-              className="w-full mt-4"
+              className="w-full mt-3"
               onClick={() => setMobileMenuOpen(false)}
             >
               <Button 
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-full text-sm"
               >
                 Get Started
               </Button>

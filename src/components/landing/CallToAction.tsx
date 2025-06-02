@@ -39,29 +39,29 @@ const CallToAction = () => {
   };
   
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700">
+    <section className="py-12 bg-gradient-to-r from-blue-600 to-blue-700">
       <div className="container mx-auto px-4 max-w-4xl text-center">
-        <div className="bg-white rounded-3xl p-10 shadow-2xl">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        <div className="bg-white rounded-2xl p-8 shadow-2xl">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
             Get Started with Ava
           </h2>
-          <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
+          <p className="text-base text-gray-600 mb-5 max-w-xl mx-auto">
             Join healthcare practices across Africa that are using AfriCopilot AI to transform their patient care and operations.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
             <Button 
               asChild 
               size="lg" 
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-full shadow-lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 text-base rounded-full shadow-lg"
             >
               <Link to="/dashboard">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-4 text-lg rounded-full"
+              className="border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 text-base rounded-full"
               onClick={() => setIsOpen(true)}
             >
               Request a Demo
@@ -71,15 +71,15 @@ const CallToAction = () => {
       </div>
       
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-[425px] rounded-2xl">
+        <DialogContent className="sm:max-w-[425px] rounded-xl">
           <DialogHeader>
-            <DialogTitle className="text-xl font-bold">Request a Demo</DialogTitle>
-            <DialogDescription className="text-gray-600">
+            <DialogTitle className="text-lg font-bold">Request a Demo</DialogTitle>
+            <DialogDescription className="text-gray-600 text-sm">
               Fill out the form below and our team will get in touch with you to schedule a personalized demo.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit}>
-            <div className="grid gap-4 py-4">
+            <div className="grid gap-3 py-4">
               <div className="grid gap-2">
                 <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                 <Input 
@@ -87,7 +87,7 @@ const CallToAction = () => {
                   value={name} 
                   onChange={(e) => setName(e.target.value)} 
                   placeholder="Your full name"
-                  className="rounded-lg border-gray-300 focus:border-blue-600"
+                  className="rounded-lg border-gray-300 focus:border-blue-600 text-sm"
                   required
                 />
               </div>
@@ -99,7 +99,7 @@ const CallToAction = () => {
                   value={email} 
                   onChange={(e) => setEmail(e.target.value)} 
                   placeholder="Your email address"
-                  className="rounded-lg border-gray-300 focus:border-blue-600"
+                  className="rounded-lg border-gray-300 focus:border-blue-600 text-sm"
                   required
                 />
               </div>
@@ -110,7 +110,7 @@ const CallToAction = () => {
                   value={company} 
                   onChange={(e) => setCompany(e.target.value)} 
                   placeholder="Your organization name"
-                  className="rounded-lg border-gray-300 focus:border-blue-600"
+                  className="rounded-lg border-gray-300 focus:border-blue-600 text-sm"
                   required
                 />
               </div>
@@ -118,7 +118,7 @@ const CallToAction = () => {
             <DialogFooter>
               <Button 
                 type="submit" 
-                className="bg-blue-600 hover:bg-blue-700 rounded-full px-8"
+                className="bg-blue-600 hover:bg-blue-700 rounded-full px-6 text-sm"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Submit Request"}
