@@ -26,7 +26,7 @@ const Header = () => {
           <Link to="/#features" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Features</Link>
           <Link to="/#use-cases" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Solutions</Link>
           <Link to="/#benefits" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">Benefits</Link>
-          <Link to="/developers" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">API</Link>
+          <Link to="/dashboard/developers" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">API</Link>
         </nav>
         
         <div className="flex items-center space-x-4">
@@ -35,13 +35,13 @@ const Header = () => {
             variant="outline" 
             className="hidden sm:inline-flex border-gray-300 text-gray-700 hover:border-blue-600 hover:text-blue-600 rounded-full px-6"
           >
-            <Link to="/agent-setup">Log In</Link>
+            <Link to="/dashboard">Log In</Link>
           </Button>
           <Button 
             asChild 
             className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 shadow-lg"
           >
-            <Link to="/agent-setup">Get Started</Link>
+            <Link to="/dashboard">Get Started</Link>
           </Button>
           
           {/* Mobile Menu Toggle */}
@@ -87,14 +87,14 @@ const Header = () => {
               Benefits
             </Link>
             <Link 
-              to="/developers" 
+              to="/dashboard/developers" 
               className="font-medium text-gray-700 hover:text-blue-600 py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               API
             </Link>
             <Link 
-              to="/agent-setup" 
+              to="/dashboard" 
               className="w-full mt-4"
               onClick={() => setMobileMenuOpen(false)}
             >

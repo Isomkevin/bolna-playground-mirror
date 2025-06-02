@@ -38,20 +38,20 @@ const features = [
 
 const UseCases = () => {
   return (
-    <section id="use-cases" className="py-20 bg-white">
+    <section id="use-cases" className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
                 Supercharge every function
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed">
                 From patient care to administrative tasks, our AI agents handle everything your healthcare practice needs to run smoothly.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {features.map((feature, index) => (
                 <Card key={index} className="bg-gray-50 border-0 p-4 hover:bg-blue-50 transition-colors duration-300">
                   <CardContent className="p-0 flex items-start space-x-4">
@@ -68,26 +68,26 @@ const UseCases = () => {
             </div>
           </div>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             <Card className="bg-gradient-to-br from-blue-600 to-blue-700 text-white border-0 rounded-3xl overflow-hidden">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">Transform into an AI Clinic that runs on autopilot</h3>
-                <div className="space-y-4">
+                <h3 className="text-xl font-bold mb-4">Transform into an AI Clinic that runs on autopilot</h3>
+                <div className="space-y-3">
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
-                    <span>Reduce operational costs by 80%</span>
+                    <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-sm">Reduce operational costs by 80%</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
-                    <span>Improve patient satisfaction scores</span>
+                    <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-sm">Improve patient satisfaction scores</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
-                    <span>24/7 availability for patient care</span>
+                    <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-sm">24/7 availability for patient care</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-6 w-6 flex-shrink-0" />
-                    <span>HIPAA compliant and secure</span>
+                    <CheckCircle className="h-5 w-5 flex-shrink-0" />
+                    <span className="text-sm">HIPAA compliant and secure</span>
                   </div>
                 </div>
                 <Button className="mt-6 bg-white text-blue-600 hover:bg-gray-100 rounded-full px-8">
@@ -100,19 +100,19 @@ const UseCases = () => {
               <div className="aspect-square bg-blue-100 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full mx-auto mb-2"></div>
-                  <p className="text-sm font-medium text-gray-700">Dr. AI Assistant</p>
+                  <p className="text-xs font-medium text-gray-700">Dr. AI Assistant</p>
                 </div>
               </div>
               <div className="aspect-square bg-blue-100 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full mx-auto mb-2"></div>
-                  <p className="text-sm font-medium text-gray-700">Schedule Bot</p>
+                  <p className="text-xs font-medium text-gray-700">Schedule Bot</p>
                 </div>
               </div>
               <div className="aspect-square bg-blue-100 rounded-2xl flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-blue-600 rounded-full mx-auto mb-2"></div>
-                  <p className="text-sm font-medium text-gray-700">Care Monitor</p>
+                  <p className="text-xs font-medium text-gray-700">Care Monitor</p>
                 </div>
               </div>
             </div>

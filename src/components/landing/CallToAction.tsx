@@ -39,13 +39,13 @@ const CallToAction = () => {
   };
   
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-700">
+    <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700">
       <div className="container mx-auto px-4 max-w-4xl text-center">
-        <div className="bg-white rounded-3xl p-12 shadow-2xl">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <div className="bg-white rounded-3xl p-10 shadow-2xl">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
             Get Started with Ava
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
             Join healthcare practices across Africa that are using AfriCopilot AI to transform their patient care and operations.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -54,7 +54,7 @@ const CallToAction = () => {
               size="lg" 
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 text-lg rounded-full shadow-lg"
             >
-              <Link to="/agent-setup">
+              <Link to="/dashboard">
                 Get Started <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -73,14 +73,14 @@ const CallToAction = () => {
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-[425px] rounded-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">Request a Demo</DialogTitle>
+            <DialogTitle className="text-xl font-bold">Request a Demo</DialogTitle>
             <DialogDescription className="text-gray-600">
               Fill out the form below and our team will get in touch with you to schedule a personalized demo.
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handleSubmit}>
-            <div className="grid gap-6 py-6">
-              <div className="grid gap-3">
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
                 <Label htmlFor="name" className="text-sm font-medium">Name</Label>
                 <Input 
                   id="name" 
@@ -91,7 +91,7 @@ const CallToAction = () => {
                   required
                 />
               </div>
-              <div className="grid gap-3">
+              <div className="grid gap-2">
                 <Label htmlFor="email" className="text-sm font-medium">Email</Label>
                 <Input 
                   id="email" 
@@ -103,7 +103,7 @@ const CallToAction = () => {
                   required
                 />
               </div>
-              <div className="grid gap-3">
+              <div className="grid gap-2">
                 <Label htmlFor="company" className="text-sm font-medium">Company</Label>
                 <Input 
                   id="company" 
